@@ -4,6 +4,6 @@ services:
 
 
 before_install:
-    - docker build -t smita/docker-react -f Dockerfile.dev .
+    - docker build -t smita/docker-react1 -f Dockerfile.dev .
 script:
-    - docker run -e CI=true smita/docker-react npm run test -- --coverage
+    - docker run -e CI=true smita/docker-react1 npm run test -- --coverage
