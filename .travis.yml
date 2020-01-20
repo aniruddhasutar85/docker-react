@@ -7,3 +7,19 @@ before_install:
     - docker build -t smita/docker-react1 -f Dockerfile.dev .
 script:
     - docker run -e CI=true smita/docker-react1 npm run test -- --coverage
+
+deploy:
+    provider: elasticbeanstalk
+    region: "us-east-1"
+    app: "docker-react"
+    env: "DockerReact-env"
+    bucket_name: "elasticbeanstalk-us-east-1-868348207858"
+    bucket_path: "docker-react"
+    on:
+        branch: master
+    acccess_key_id: $AWS_ACCESS_KEY
+    secret_access_key:
+        secure: "$AWS_SECRET_KEY"
+
+
+        
